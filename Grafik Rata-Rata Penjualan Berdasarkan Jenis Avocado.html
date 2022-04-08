@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>"Nyoman Gede Trisna Sanjaya" - 06311940000054</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<!-- Write your comments here -->
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const labels = [
+            '2015',
+            '2016',
+            '2017',
+            '2018'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Code 4770',
+                    animations: {
+                        y: {
+                            duration: 2500,
+                            delay: 0
+                        }
+                    },
+                    data: [25426.9625200355,
+                        28468.6333707266,
+                        15941.5427787487,
+                        17694.9033873456,
+                    ],
+                    borderColor: 'rgb(247, 220, 111)',
+                    backgroundColor: 'rgb(247, 220, 111)',
+                    fill: true
+                },
+                {
+                    label: 'Code 4225',
+                    animations: {
+                        y: {
+                            duration: 2500,
+                            delay: 500
+                        }
+                    },
+                    data: [313633.844366875,
+                        297850.478632479,
+                        269964.124349877,
+                        314628.606697531,
+                    ],
+                    borderColor: 'rgb(118, 215, 196)',
+                    backgroundColor: 'rgb(118, 215, 196)',
+                    fill: true
+                },
+                {
+                    label: 'Code 4046',
+                    animations: {
+                        y: {
+                            duration: 2500,
+                            delay: 1000
+                        }
+                    },
+                    data: [304443.451707926,
+                        271567.466577635,
+                        288716.905193987,
+                        355323.868904321,
+                    ],
+                    borderColor: 'rgb(241, 148, 138)',
+                    backgroundColor: 'rgb(241, 148, 138)',
+                    fill: true
+                }
+            ]
+        };
+
+        const config = {
+
+            type: 'line',
+            data: data,
+            options: {
+                animations: {
+                    y: {
+                        easing: 'easeOutBounce',
+                        from: (ctx) => {
+                            if (ctx.type === 'data') {
+                                if (ctx.mode === 'default' && !ctx.dropped) {
+                                    ctx.dropped = true;
+                                    return 0;
+                                }
+                            }
+                        }
+                    }
+                },
+                hoverRadius: 12,
+                hoverBackgroundColor: 'yellow',
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Rata-Rata Penjualan Berdasarkan Jenis Avocado'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Year'
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        };
+
+    </script>
+
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+
+</body>
+
+</html>
